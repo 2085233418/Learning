@@ -1,0 +1,28 @@
+int lengthOfLongestSubstring(char * s) {
+
+    int last_pos[128];
+    for (int i = 0; i < 128; i++) {
+        last_pos[i] = -1;
+    }
+    
+    int max_len = 0;
+    int left = 0;  
+    int len = strlen(s);
+    
+    for (int right = 0; right < len; right++) {
+        char current = s[right];
+        
+        if (last_pos[current] != -1 && last_pos[current] >= left) {
+            left = last_pos[current] + 1;
+        }
+        
+        last_pos[current] = right;
+        
+        int current_len = right - left + 1;
+        if (current_len > max_len) {
+            max_len = current_len;
+        }
+    }
+    
+    return max_len;
+}
