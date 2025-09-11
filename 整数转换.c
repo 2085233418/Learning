@@ -5,4 +5,4 @@ int reverse(int x) {
         x/=10;
     }
     return (int)result;
-}/*你好*/
+}/*666*/
